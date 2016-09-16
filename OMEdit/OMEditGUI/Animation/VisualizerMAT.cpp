@@ -32,7 +32,7 @@
  * @author Volker Waurich <volker.waurich@tu-dresden.de>
  */
 
-#include "VisualizerMat.h"
+#include "VisualizerMAT.h"
 
 VisualizerMAT::VisualizerMAT(const std::string& modelFile, const std::string& path)
         : VisualizerAbstract(modelFile, path, VisType::MAT),
@@ -86,7 +86,7 @@ void VisualizerMAT::readMat(const std::string& modelFile, const std::string& pat
 
 void VisualizerMAT::updateVisAttributes(const double time)
 {
-	std::cout<<"updateVisAttributes at "<<time <<std::endl;
+  std::cout<<"updateVisAttributes at "<<time <<std::endl;
     // Update all shapes.
     unsigned int shapeIdx = 0;
     rAndT rT;
@@ -96,7 +96,7 @@ void VisualizerMAT::updateVisAttributes(const double time)
     {
         for (auto& shape : _baseData->_shapes)
         {
-        	//std::cout<<"shape "<<shape._id <<std::endl;
+          //std::cout<<"shape "<<shape._id <<std::endl;
 
             // Get the values for the scene graph objects
             updateObjectAttributeMAT(&shape._length, time, tmpReaderPtr);

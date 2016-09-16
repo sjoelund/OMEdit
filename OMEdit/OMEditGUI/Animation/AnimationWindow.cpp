@@ -33,6 +33,7 @@
  */
 
 #include "AnimationWindow.h"
+#include <osg/Version>
 
 /*!
   \class AnimationWindow
@@ -158,7 +159,9 @@ QWidget* AnimationWindow::setupViewWidget()
   camera->setProjectionMatrixAsPerspective(30.0f, static_cast<double>(traits->width/2) / static_cast<double>(traits->height/2), 1.0f, 10000.0f);
   mpSceneView->addEventHandler(new osgViewer::StatsHandler());
   mpSceneView->setCameraManipulator(new osgGA::MultiTouchTrackballManipulator());
+#if OPENSCENEGRAPH_MAJOR_VERSION>=3 && OPENSCENEGRAPH_MINOR_VERSION>=4
   gw->setTouchEventsEnabled(true);
+#endif
   return gw->getGLWidget();
 }
 
@@ -206,7 +209,7 @@ void AnimationWindow::chooseAnimationFileSlotFunction()
 {
   QString *dir = new QString("./");
   std::string file = StringHandler::getOpenFileName(this, QString(Helper::applicationName).append(" - ").append(Helper::chooseFile),
-		  dir, Helper::matFileTypes, NULL).toStdString();
+      dir, Helper::matFileTypes, NULL).toStdString();
   if (file.compare("")) {
     std::size_t pos = file.find_last_of("/\\");
     mPathName = file.substr(0, pos + 1);
