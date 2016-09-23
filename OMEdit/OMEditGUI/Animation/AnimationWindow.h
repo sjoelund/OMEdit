@@ -50,7 +50,7 @@
 #include <osg/Vec3>
 #include <osgDB/ReadFile>
 #include <osgGA/MultiTouchTrackballManipulator>
-#include <osgQt/GraphicsWindowQt>
+#include <../../osgQt/GraphicsWindowQt>
 #include <osgViewer/CompositeViewer>
 #include <osgViewer/View>
 #include <osgViewer/ViewerEventHandlers>
